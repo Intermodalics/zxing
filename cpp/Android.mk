@@ -1,0 +1,58 @@
+LOCAL_PATH := $(call my-dir)
+PROJECT_ROOT:= $(LOCAL_PATH)
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := zxing
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/core/src
+FILE_LIST_CPP := $(wildcard $(LOCAL_PATH)/core/src/zxing/*.cpp)
+FILE_LIST_CPP_COMMON := $(wildcard $(LOCAL_PATH)/core/src/zxing/common/*.cpp)
+FILE_LIST_CPP_COMMON_DETECTOR := $(wildcard $(LOCAL_PATH)/core/src/zxing/common/detector/*.cpp)
+FILE_LIST_CPP_REEDSOLOMON := $(wildcard $(LOCAL_PATH)/core/src/zxing/common/reedsolomon/*.cpp)
+FILE_LIST_CPP_ONED := $(wildcard $(LOCAL_PATH)/core/src/zxing/oned/*.cpp)
+FILE_LIST_CPP_QRCODE := $(wildcard $(LOCAL_PATH)/core/src/zxing/qrcode/*.cpp)
+FILE_LIST_CPP_DETECTOR := $(wildcard $(LOCAL_PATH)/core/src/zxing/qrcode/detector/*.cpp)
+FILE_LIST_CPP_DECODER := $(wildcard $(LOCAL_PATH)/core/src/zxing/qrcode/decoder/*.cpp)
+FILE_LIST_CPP_DATAMATRIX := $(wildcard $(LOCAL_PATH)/core/src/zxing/datamatrix/*.cpp)
+FILE_LIST_CPP_DATAMATRIX_DETECTOR := $(wildcard $(LOCAL_PATH)/core/src/zxing/datamatrix/detector/*.cpp)
+FILE_LIST_CPP_DATAMATRIX_DECODER := $(wildcard $(LOCAL_PATH)/core/src/zxing/datamatrix/decoder/*.cpp)
+FILE_LIST_CPP_AZTEC := $(wildcard $(LOCAL_PATH)/core/src/zxing/aztec/*.cpp)
+FILE_LIST_CPP_AZTEC_DETECTOR := $(wildcard $(LOCAL_PATH)/core/src/zxing/aztec/detector/*.cpp)
+FILE_LIST_CPP_AZTEC_DECODER := $(wildcard $(LOCAL_PATH)/core/src/zxing/aztec/decoder/*.cpp)
+FILE_LIST_CPP_PDF417 := $(wildcard $(LOCAL_PATH)/core/src/zxing/pdf417/*.cpp)
+FILE_LIST_CPP_PDF417_DETECTOR := $(wildcard $(LOCAL_PATH)/core/src/zxing/pdf417/detector/*.cpp)
+FILE_LIST_CPP_PDF417_DECODER := $(wildcard $(LOCAL_PATH)/core/src/zxing/pdf417/decoder/*.cpp)
+FILE_LIST_CPP_PDF417_DECODER_EC := $(wildcard $(LOCAL_PATH)/core/src/zxing/pdf417/decoder/ec/*.cpp)
+FILE_LIST_CC_BIGINT := $(wildcard $(LOCAL_PATH)/core/src/bigint/*.cc)
+FILE_LIST_ICONV_LIB := $(wildcard $(LOCAL_PATH)/../../libiconv-1.13.1/lib/*.h)
+FILE_LIST_ICONV_INCLUDE := $(wildcard $(LOCAL_PATH)/../../libiconv-1.13.1/include/*.h)
+LOCAL_SRC_FILES := $(FILE_LIST_CPP:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_COMMON:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_COMMON_DETECTOR:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_REEDSOLOMON:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_ONED:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_QRCODE:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_DETECTOR:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_DECODER:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_DATAMATRIX:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_DATAMATRIX_DETECTOR:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_DATAMATRIX_DECODER:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_AZTEC:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_AZTEC_DETECTOR:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_AZTEC_DECODER:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_PDF417:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_PDF417_DETECTOR:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_PDF417_DECODER:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CPP_PDF417_DECODER_EC:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_CC_BIGINT:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_ICONV_LIB:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST_ICONV_INCLUDE:$(LOCAL_PATH)/%=%)
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../libiconv-1.13.1/include/
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../libiconv-1.13.1/lib/
+LOCAL_WHOLE_STATIC_LIBRARIES := libiconv
+LOCAL_LDLIBS :=-llog
+
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/core/src
+include $(BUILD_SHARED_LIBRARY)
+
+$(call import-add-path, $(PROJECT_ROOT)/../../)
+$(call import-module, libiconv-1.13.1)

@@ -2,8 +2,13 @@
 # CMake listfile to specify the build process, see:
 # http://www.cmake.org/cmake/help/documentation.html
 #
-project(zxing)
 cmake_minimum_required(VERSION 2.8.0)
+project(zxing)
+find_package(catkin REQUIRED)
+
+catkin_package(
+   INCLUDE_DIRS ./core/src
+   LIBRARIES ${PROJECT_NAME})
 
 set(CMAKE_LIBRARY_PATH /opt/local/lib ${CMAKE_LIBRARY_PATH})
 

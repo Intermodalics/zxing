@@ -1,0 +1,18 @@
+<package format="2">
+  <name>zxing</name>
+  <version>0.0.0</version>
+  <description>This package contains zxing library to scan qr and bar codes in images.</description>
+
+  <maintainer email="malte@intermodalics.eu">malteim</maintainer>
+  <maintainer email="marieke@intermodalics.eu">mcopejans</maintainer>
+  <maintainer email="ruben@intermodalics.eu">smits</maintainer>
+  <license>Closed</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>cmake_modules</depend>
+
+  <export>
+    <nodelet plugin="${prefix}/nodelet_plugins.xml" />
+  </export>
+</package>
