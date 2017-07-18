@@ -23,8 +23,8 @@ FILE_LIST_CPP_PDF417_DETECTOR := $(wildcard $(LOCAL_PATH)/core/src/zxing/pdf417/
 FILE_LIST_CPP_PDF417_DECODER := $(wildcard $(LOCAL_PATH)/core/src/zxing/pdf417/decoder/*.cpp)
 FILE_LIST_CPP_PDF417_DECODER_EC := $(wildcard $(LOCAL_PATH)/core/src/zxing/pdf417/decoder/ec/*.cpp)
 FILE_LIST_CC_BIGINT := $(wildcard $(LOCAL_PATH)/core/src/bigint/*.cc)
-FILE_LIST_ICONV_LIB := $(wildcard $(LOCAL_PATH)/../../libiconv-1.13.1/lib/*.h)
-FILE_LIST_ICONV_INCLUDE := $(wildcard $(LOCAL_PATH)/../../libiconv-1.13.1/include/*.h)
+FILE_LIST_ICONV_LIB := $(wildcard $(LOCAL_PATH)/../../libiconv/lib/*.h)
+FILE_LIST_ICONV_INCLUDE := $(wildcard $(LOCAL_PATH)/../../libiconv/include/*.h)
 LOCAL_SRC_FILES := $(FILE_LIST_CPP:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += $(FILE_LIST_CPP_COMMON:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += $(FILE_LIST_CPP_COMMON_DETECTOR:$(LOCAL_PATH)/%=%)
@@ -46,8 +46,8 @@ LOCAL_SRC_FILES += $(FILE_LIST_CPP_PDF417_DECODER_EC:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += $(FILE_LIST_CC_BIGINT:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += $(FILE_LIST_ICONV_LIB:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += $(FILE_LIST_ICONV_INCLUDE:$(LOCAL_PATH)/%=%)
-LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../libiconv-1.13.1/include/
-LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../libiconv-1.13.1/lib/
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../libiconv/include/
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../libiconv/lib/
 LOCAL_WHOLE_STATIC_LIBRARIES := libiconv
 LOCAL_LDLIBS :=-llog
 
@@ -55,4 +55,4 @@ LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/core/src
 include $(BUILD_SHARED_LIBRARY)
 
 $(call import-add-path, $(PROJECT_ROOT)/../../)
-$(call import-module, libiconv-1.13.1)
+$(call import-module, libiconv)
